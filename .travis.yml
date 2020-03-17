@@ -1,10 +1,10 @@
 language: java
 jdk:
 - openjdk11
-#addons:
-#  sonarcloud:
-#    organization: lorescianatico-github
-#    token:
-#      secure: bS0e26SOD46nAP/Ec2rEQCC8SYnCVmybqbeC6L5tL1uWk5RMHjao6nEOIWlTHidlCOyHvrBkkAgisFmI765nzFYyKjBmCAfIghpOgvW6FAPJsloOzQ+AFB+wvWiF8kTsuq6W46Y3JAL2863uAzt/nPAK7JG/lQITMXgdHU04lNnrz3UrLOlJHywBGu+7iMLUxChxW8ReW42CKjVa5X6Tjcq7yVr2KJ4IThbdGnyE+UHzc18NLEGHKF+WDmpjanZC/fYr8OFsI6RnAzA+jtBYoKGxb/RIIJiEgCTjpzHtTbkHLG07B39B0JkyckzNuWOL7TZ+Rzu38vDD03qcSsXqH47znK46yOFIlI5yOwSK4TDODR4K68/ICdvDFK0jbrEN+z9frs30fG15see41zNiNAZY4D60l36TgDQqqDtEnQ+1g75s0BYDzWj/ZEglgJobmF0iWfxirrzRtDpj/mYC40xsDn9oiMIodSXQwKjZDha5m9Bc400lm3fVDxqC4h5vVzK+s+PWoQ63y5N03qVGDBYHFY1avAqLWQ71DBoqGD+Cpen2GCQhgZF3h2BXekuLRU9r1XTHBMcWSiz+S0Rez/309ZXWedPqX/aWYiBvpsQOd7stLjeiUUIhZWWFKQC1dwVwNaM40wTIHHEvnxW0gCUU9cKJduuyR0qaBOCB/Bc=
+addons:
+  sonarcloud:
+    organization: lorescianatico-github
+    token:
+      secure: s29LqkuXdW3q8c20jWQC/ez/I2QnyefR6Tnt1+FGeGXqHSjL057WM3lE8HGruc9xFk0EaX5zLNmQpVz/pDRY9z2Bm6+xPi/eMiRYGpHJgYsBfM58Zkoyq/3H7iRIK6zZGi+PO8pnA06vsK7c577Pj0YzNSEB7laG13p05IULUv03eFWZjNN8MXBYN8MvjuMNNYimHD2tYZyN8NDt7tw3j72nQhXyeAoPEBITQ7Kmbr4KuZ146SunBpsD7WFkTUtrwkmRcQFrXWCSwioZ/4Ufuaq2QopYhAdSCADV3bz9cJ3oxmxhbczsEnNb1y4NkoUof+mlqjht9KT5/AZJ8QWIyA+P7NXZK7Z+k+SpGz6KNLLvn1UtHPwud5oSZlQ7ZeonfZEhlWMDIUhzJm/W/fSeyAYvtAsBctKupmRhv3Hr5k+8dNqMaZ0mZJOoXoFayyrSUs+anJGjcgG4BqUe+ewP6Nc6zDm5NHNFOwvQ1HxIt+I8OIrkDyqxiiOT2r2U2mbicN1bwTWCIPRefxUMrnT7ZO3pGbH2ifRTKJ4HU27XDUoJS9ptZZiXsiXwg74SXbJrxaZYZdNSqfwsGTM9R306E250EYkhkVY67uAW1ULGZ60mwgGsuOSA4Ejj8DyhZbxTLqSfhbe4BE3EuisNjiFYSTW/oW+5LsadqY8dwQUN0EI=
 script:
-- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install #sonar:sonar -Dsonar.projectKey=com.lorescianatico:spring.chain-parent
+- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=LoreScianatico_SpringPatterns
