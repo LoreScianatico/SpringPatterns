@@ -11,7 +11,7 @@ import java.util.Map;
 
 @Component
 @Slf4j
-public class PrototypeProviderImpl implements PrototypeProvider {
+public final class PrototypeProviderImpl implements PrototypeProvider {
 
     private static Map<Class<?>, Object> prototypes = Collections.synchronizedMap(new HashMap<>());
 
