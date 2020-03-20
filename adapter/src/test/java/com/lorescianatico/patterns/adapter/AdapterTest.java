@@ -21,6 +21,7 @@ class AdapterTest {
         Assertions.assertNotNull(i);
         Assertions.assertEquals(2, legacyServiceAdapter.addsOne(1));
         Assertions.assertEquals("3", legacyServiceAdapter.getSomethingDifferent(3));
+        Assertions.assertEquals(4, legacyServiceAdapter.sum(2,2));
         Assertions.assertThrows(NotAdaptedMethodException.class, legacyServiceAdapter::unadaptedOne);
     }
 }
