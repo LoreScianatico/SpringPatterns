@@ -10,4 +10,15 @@ public class LegacyService {
         return random.nextInt();
     }
 
+    public Integer plusOne(Integer i){
+        return i + 1;
+    }
+
+    public String intToString(Integer i){
+        return i.toString();
+    }
+
+    public int sumUp(int a, int b){
+        return a + b;
+    }
 }

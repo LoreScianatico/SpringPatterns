@@ -1,6 +1,8 @@
 package com.lorescianatico.patterns.adapter;
 
 import java.lang.reflect.Proxy;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public final class Adapter<V> {
@@ -28,6 +30,16 @@ public final class Adapter<V> {
 
     public Adapter<V> adaptMethod(String methodName, Supplier<?> supplier) {
         adapterInvocationHandler.addMethod(methodName, supplier);
+        return this;
+    }
+
+    public Adapter<V> adaptMethod(String methodName, Function<?, ?> function) {
+        adapterInvocationHandler.addMethod(methodName, function);
+        return this;
+    }
+
+    public Adapter<V> adaptMethod(String methodName, BiFunction<?, ?, ?> function) {
+        adapterInvocationHandler.addMethod(methodName, function);
         return this;
     }
 
