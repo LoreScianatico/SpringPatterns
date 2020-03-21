@@ -1,5 +1,7 @@
 package com.lorescianatico.patterns.adapter;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -8,7 +10,8 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-public class AdapterInvocationHandler implements InvocationHandler {
+@Slf4j
+final class AdapterInvocationHandler implements InvocationHandler {
 
     private Map<String, Supplier<?>> supplierMap = new HashMap<>();
 
@@ -17,9 +20,9 @@ public class AdapterInvocationHandler implements InvocationHandler {
     private Map<String, BiFunction<?,?,?>> biFunctionMap = new HashMap<>();
 
     @Override
-    public Object invoke(Object o, Method method, Object[] objects) throws Throwable {
+    public Object invoke(Object o, Method method, Object[] objects) {
         String methodName = method.getName();
-        Supplier supplier = supplierMap.get(methodName);
+        Supplier<?> supplier = supplierMap.get(methodName);
         if(supplier != null){
             return supplier.get();
         }
@@ -31,19 +34,19 @@ public class AdapterInvocationHandler implements InvocationHandler {
         if (biFunction != null){
             return biFunction.apply(objects[0], objects[1]);
         }
-
-        throw new NotAdaptedMethodException("Unknown adapter method: " + methodName + " for class: " + o.getClass().getName());
+        logger.error("Unknown adapter method: {}", methodName);
+        throw new NotAdaptedMethodException("Unknown adapter method: " + methodName);
     }
 
     void addMethod(String methodName, Supplier<?> supplier){
         supplierMap.put(methodName, supplier);
     }
 
-    void addMethod(String methodName, Function<?,?> function){
+    <T, U> void addMethod(String methodName, Function<? super T, ? extends U> function){
         functionMap.put(methodName, function);
     }
 
-    void addMethod(String methodName, BiFunction<?,?,?> bifunction){
+    <S, T, U> void addMethod(String methodName, BiFunction<? super T, ? super S, ? extends U> bifunction){
         biFunctionMap.put(methodName, bifunction);
     }
 }

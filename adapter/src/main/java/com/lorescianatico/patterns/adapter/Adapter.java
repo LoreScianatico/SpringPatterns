@@ -24,21 +24,21 @@ public final class Adapter<V> {
     public V build(){
         return (V) Proxy.newProxyInstance(
                 Adapter.class.getClassLoader(),
-                new Class[] { adaptInterface },
+                new Class[] {adaptInterface},
                 adapterInvocationHandler);
     }
 
-    public Adapter<V> adaptMethod(String methodName, Supplier<?> supplier) {
+    public <S> Adapter<V> adaptMethod(String methodName, Supplier<? extends S> supplier) {
         adapterInvocationHandler.addMethod(methodName, supplier);
         return this;
     }
 
-    public Adapter<V> adaptMethod(String methodName, Function<?, ?> function) {
+    public <T, U> Adapter<V> adaptMethod(String methodName, Function<? super T, ? extends U> function) {
         adapterInvocationHandler.addMethod(methodName, function);
         return this;
     }
 
-    public Adapter<V> adaptMethod(String methodName, BiFunction<?, ?, ?> function) {
+    public <S, T, U> Adapter<V> adaptMethod(String methodName, BiFunction<? super T, ? super S, ? extends U> function) {
         adapterInvocationHandler.addMethod(methodName, function);
         return this;
     }
