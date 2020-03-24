@@ -44,6 +44,7 @@ public final class PrototypeProviderImpl implements PrototypeProvider {
     }
 
     private <T> Supplier<T> getDefaultConstructor(T prototype) {
+        logger.warn("Searching for a suitable constructor for {}", prototype.getClass().getName());
         return () -> {
             try {
                 return (T) prototype.getClass().getDeclaredConstructor().newInstance();
