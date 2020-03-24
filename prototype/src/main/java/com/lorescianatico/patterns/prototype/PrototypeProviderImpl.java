@@ -22,7 +22,7 @@ public final class PrototypeProviderImpl implements PrototypeProvider {
         if (prototype != null){
             return clonePrototype(prototypeClass, prototype);
         } else {
-            String msg = "Prototype not found for class: " + prototypeClass.getName();
+            String msg = String.format("Prototype not found for class: %s", prototypeClass.getName());
             logger.error(msg);
             throw new UnsupportedPrototypeException(msg);
         }

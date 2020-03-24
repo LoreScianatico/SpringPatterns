@@ -20,6 +20,8 @@ class PrototypeProviderImplTest {
     void getPrototype() {
         assertNotNull(prototypeProviderImpl.getPrototype(TestClass.class));
         assertThrows(UnsupportedPrototypeException.class, () -> prototypeProviderImpl.getPrototype(String.class));
+        prototypeProviderImpl.storePrototype(TestClassWithNoPublicConstructor.getInstance());
+        assertThrows(UnsupportedPrototypeException.class, () -> prototypeProviderImpl.getPrototype(TestClassWithNoPublicConstructor.class));
     }
 
     @Test
