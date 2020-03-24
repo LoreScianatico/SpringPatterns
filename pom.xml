@@ -8,7 +8,8 @@
 		<module>facade</module>
 		<module>utils</module>
 		<module>adapter</module>
-	</modules>
+        <module>expirablemap</module>
+    </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
