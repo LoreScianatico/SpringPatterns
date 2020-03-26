@@ -227,14 +227,14 @@ class ExpirableMapTest {
     void testRemovalOfExpiredElements() throws Exception {
         Map<String, String> map = new ExpirableMap<>(3000, TimeUnit.MILLISECONDS); //three seconds
         map.put("A", "a");
-        Thread.sleep(1000); //one second
+        TimeUnit.MILLISECONDS.sleep(1000);
         map.put("B", "b");
         assertEquals(2, map.size());
-        Thread.sleep(2500); //2.5 seconds
+        TimeUnit.MILLISECONDS.sleep(2500);
         assertTrue(map.size()<=2);
-        Thread.sleep(3000); //three seconds
+        TimeUnit.MILLISECONDS.sleep(3000);
         assertTrue(map.size()<=1);
-        Thread.sleep(2000);
+        TimeUnit.MILLISECONDS.sleep(2000);
         assertFalse(map.containsKey("A"));
         assertFalse(map.containsKey("B"));
         assertTrue(map.isEmpty());
