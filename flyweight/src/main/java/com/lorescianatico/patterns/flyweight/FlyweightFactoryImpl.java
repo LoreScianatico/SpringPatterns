@@ -15,13 +15,20 @@ public final class FlyweightFactoryImpl<T, V> implements FlyweightFactory<T, V> 
     @Override
     public T get(V key, Supplier<T> supplier) {
         logger.debug("Size before calling: {}", flyweightMap.size());
-        T  instance = flyweightMap.computeIfAbsent(key, k -> supplier.get());
+        T  instance = computeInstance(key, k -> supplier.get());
         logger.debug("Size after calling: {}", flyweightMap.size());
         return instance;
     }
 
     @Override
     public T get(V key, Function<V,T> producerFunction) {
-        return flyweightMap.computeIfAbsent(key, producerFunction);
+        logger.debug("Size before calling: {}", flyweightMap.size());
+        T  instance = computeInstance(key, producerFunction);
+        logger.debug("Size after calling: {}", flyweightMap.size());
+        return instance;
+    }
+
+    private T computeInstance(V key, Function<V,T> remappingFunction) {
+        return flyweightMap.computeIfAbsent(key, remappingFunction);
     }
 }
