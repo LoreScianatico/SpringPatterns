@@ -9,6 +9,7 @@
 		<module>utils</module>
 		<module>adapter</module>
         <module>expirablemap</module>
+        <module>flyweight</module>
     </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
